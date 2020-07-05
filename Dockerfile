@@ -1,5 +1,4 @@
 FROM debian
-MAINTAINER Johannes Boesl <j.boesl@adito.de>
 
 ENV LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
 
