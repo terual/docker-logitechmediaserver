@@ -8,6 +8,11 @@ RUN \
   apt-get clean -qy && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Set timezone
+RUN \ 
+  echo "Europe/Amsterdam" > /etc/timezone && \
+  dpkg-reconfigure -f noninteractive tzdata
+
 # Install LMS
 RUN /bin/bash -c '\
   export DEBIAN_FRONTEND="noninteractive" && \
