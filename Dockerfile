@@ -1,6 +1,6 @@
 FROM debian
 
-ENV LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8"
+ENV LC_ALL="C.UTF-8" LANG="en_US.UTF-8" LANGUAGE="en_US.UTF-8" TZ="Europe/Amsterdam"
 
 RUN \
   apt-get update -qq && \
@@ -9,9 +9,7 @@ RUN \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Set timezone
-RUN \ 
-  echo "Europe/Amsterdam" > /etc/timezone && \
-  dpkg-reconfigure -f noninteractive tzdata
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Install LMS
 RUN /bin/bash -c '\
